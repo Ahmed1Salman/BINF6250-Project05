@@ -1,5 +1,5 @@
 # Introduction
-Description of the project
+This project explores the fundamental principles of genome assembly using short DNA sequencing reads . The goal is to implement a simple overlap-based assembler that identifies overlapping reads, merges them into longer sequences, and continues the process until no additional merges are possible. The resulting sequences, or contigs, are then analyzed to evaluate how well the reads cover the assembled genome.The project also examines how the choice of overlap length (k) affects assembly accuracy. A small k can lead to incorrect overlaps between unrelated reads, while a large k can cause genuine overlaps to be missed. It also explores the fundamentals of object oriented programming in creating the De Bruin graph that follows a eularian walk.
 
 # Pseudocode
 
