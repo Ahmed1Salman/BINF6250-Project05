@@ -123,6 +123,11 @@ BUILD the final PFM using all motifs
 RETURN the final PFM
 
 ```
+# Dependencies 
+Python
+numpy
+bamnostic
+seqlogo
 
 # Successes
 We successfully, completed the initialisation stage and created a convergence loop and built a PFM from it that we used to determine the PWM.One major success of this team was our ability to collaborate effectively. Despite time zone conflicts, we met multiple time as a full group and as groups of two when one person was unavailable. We also communicated regularly over teams. Despite our code not being finished, our pseudocode clearly conveys the product we intended to make. As it stands now, the code does successfully identify the Shine-Delgarno sequence. Due to seqlogo not working properly for us, this was determined by printing out the final motif list. This is exactly what the video lecture states would happen if the code does not consider reverse complementarity, which ours does not. Despite its shortcomings, we are happy that the code we have works as we intend it to.
