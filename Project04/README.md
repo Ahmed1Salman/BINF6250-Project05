@@ -81,6 +81,9 @@ Through this project, I gained practical experience applying graph theory and Py
 ## Yulia
 This project was a challenge since we all had different schedules and it was difficult to work collaboratively as much. Bessie and Abigail had elected to meet first to brainstorm and start some work on code, and after I had finished the code based on their work. Bessie also wrote out her version of the code too, so we chatted on Teams to compare the codes and see how we could make the yeast dataset more efficient. It took my version 81 minutes for it to run. It took the longest to run at the building debrujin graph step. Assembling contigs took the second longest amount of time. I do suspect my memory could be a factor here, as I did not run it on an HPC. Marcus did mention it should take 6-7 minutes to run, but I wonder if he ran it on the HPC. I think the main bottleneck here was in the for loop. Adding in print statements was helpful for me to visualize the progress of the datasets while they ran so it would not sit in silence.
 
+## Abby
+This project was challenging to complete due to scheduling constraints. However, it was interesting to be able to apply graph theory in an algorithm as we just talked about very similar concepts in another class. It was helpful to be able to use these skills over multiple different problem sets and identify the nuances and differences between the code implementation of each. The eularian walk was the most difficult for me to conceptualize because I struggle to understand recursive theories.
+
 ## Other member
 Other members' reflections on the project
 
