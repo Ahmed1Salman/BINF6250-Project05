@@ -1,5 +1,5 @@
 # Introduction
-This project explores the fundamental principles of genome assembly using short DNA sequencing reads . The goal is to implement a simple overlap-based assembler that identifies overlapping reads, merges them into longer sequences, and continues the process until no additional merges are possible. The resulting sequences, or contigs, are then analyzed to evaluate how well the reads cover the assembled genome.The project also examines how the choice of overlap length (k) affects assembly accuracy. A small k can lead to incorrect overlaps between unrelated reads, while a large k can cause genuine overlaps to be missed. It also explores the fundamentals of object oriented programming in creating the De Bruin graph that follows a eularian walk.
+This project implements a de Bruijn graph-based approach to genome assembly using Python.The implementation represents k-mers as directed edges between nodes formed by their prefixes and suffixes. By constructing a de Bruijn graph from sequencing reads, the program uses Eulerian walks to traverse the graph and assemble overlapping sequence fragments into longer contiguous sequences (contigs).The project explores key concepts in computational biology, including graph representation, k-mer analysis, graph traversal, and genome reconstruction. It provides a practical demonstration of how graph algorithms can be applied to solve problems in bioinformatics.
 
 # Pseudocode
 
@@ -69,14 +69,14 @@ def write_fasta(self, contigs, filename):
 ```
 
 # Successes
-Description of the team's learning points
+The program successfully constructs a de Bruijn graph from DNA sequencing reads by breaking the sequences into k-mers and connecting their prefixes and suffixes to represent relationships between sequence fragments. It represents the graph using an adjacency list and supports graph manipulation by tracking connections between nodes. The program applies Eulerian walk concepts to traverse the graph, aiming to use each edge once to reconstruct sequences from the input data. Through this process, it can assemble overlapping sequence fragments into longer contigs.We developed an understanding of how de Bruijn graphs can be used to represent DNA sequence fragments and support genome assembly
 
 # Struggles
 Our main struggles as a team were finding a time that worked for everyone given our schedules, and figuring out how to optimize the code for the yeast dataset. The toy dataset took a very short time to run and it outputted the contig as expected. The yeast dataset took 81 minutes to run compared to the expected 6-7 minutes, and finding ways to optimize the code was a struggle for us. 
 
 # Personal Reflections
 ## Group Leader - Bessie
-Group leader's reflection on the project
+Through this project, I gained practical experience applying graph theory and Python programming to genome assembly in bioinformatics. I learned how to construct a de Bruijn graph by representing k-mers as directed edges between nodes and how Eulerian walks can be used to traverse the graph during sequence assembly. I strengthened my understanding of object-oriented programming, graph data structures, and algorithm design while developing methods to construct and manipulate graphs. Additionally, I improved my problem-solving and debugging skills by breaking the assembly process into smaller steps and addressing challenges associated with graph traversal and sequence reconstruction. Overall, this project deepened my understanding of how computational algorithms can be applied to biological problems, particularly the reconstruction of DNA sequences from smaller fragments.
 
 ## Yulia
 This project was a challenge since we all had different schedules and it was difficult to work collaboratively as much. Bessie and Abigail had elected to meet first to brainstorm and start some work on code, and after I had finished the code based on their work. Bessie also wrote out her version of the code too, so we chatted on Teams to compare the codes and see how we could make the yeast dataset more efficient. It took my version 81 minutes for it to run. It took the longest to run at the building debrujin graph step. Assembling contigs took the second longest amount of time. I do suspect my memory could be a factor here, as I did not run it on an HPC. Marcus did mention it should take 6-7 minutes to run, but I wonder if he ran it on the HPC. I think the main bottleneck here was in the for loop. Adding in print statements was helpful for me to visualize the progress of the datasets while they ran so it would not sit in silence.
