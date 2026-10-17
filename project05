@@ -1,5 +1,27 @@
 A description of the project
 Pertinent documentation and usage write-up
-Pseudocode
+#Pseudocode
+1.first create a function
+define cal_score 
+inputs(sequences,scoring)
+
+output(matrix with scores,path)
+
+define another function (traceback)
+inputs(matrix,the path from the calculated score function )
+the function is supposed to look for high scores and walks back and  gives us the optimal alignment
+outputs(all optimal alignments)
+
+
+now write the main funtion
+define smith_waterman_algorithim
+inputs(sequences,scores)
+cal_score(sequences,scores)
+traceback(matrix,path)
+print(the optimal alignments)
+
+
+
+
 Reflection narrative that describes what went right, what went wrong, what you didn't understand, how it could have been better, and how you could have been better.
 Appendix (AI usage, citations, etc.)
