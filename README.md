@@ -1,8 +1,13 @@
 # Introduction
-Description of the project
- 
+The application of the **Smith-Waterman Algorithm** transformed Computational Biology and Bioinformatics. It established a mathematical framework to find the optimal `local sequence alignment` between two nucleotide or protein sequence, identifying pairs of segments across two long sequences that has maximum local similarity. The algorithm isolates highly conserved local regions or functional domains while ignoring non-conserved flanking regions.
+
+The program has Key Features & Biological Significance:
+* **Dynamic Programming Matrix**: Computes local alignment scores cell-by-cell by evaluating matches, mismatches, and insertion/deletion (indel) gap penalties.
+* **Zero Threshold Option ("Free Start")**: Includes a minimum score threshold of `0` in the recurrence relation , preventing cumulative negative scores and allowing local alignments to start cleanly anywhere in the matrix.
+* **Traceback Procedure**: Begins at the **global maximum score element** in the matrix (marking the end of the alignment) and steps backward along direction pointers until hitting a cell score of **`0`** (marking the start of the alignment).
+* **Arbitrary Indel Handling**: Flexible scoring scheme accommodating match rewards, mismatch penalties, and gap penalties
+
 # Pseudocode
- 
 ```
 FUNCTION CAL_SCORE(matrix, seq1, seq2, i, j, match, mismatch, gap):
     # COMPARE SEQUENCE CHARACTERS
@@ -126,7 +131,7 @@ Other members' reflections on the project
 # Generative AI Appendix
  
 Description of which generative AI was used and its version.
-- NotebookLM and Gemini
+- NotebookLM 2.0 and Gemini 4 Argon
  
 Updated the book and articles to notebookml and start asking about details of dynamic programming chapter.
  
@@ -148,3 +153,7 @@ An explanation of how it was used (e.g., to generate ideas).
  
 A justification for why generative AI was used.
 - Sometimes just reading a concept and formula is not enough for me to have a grasp on the material, so I used it as an additional source to lern about dynamic programming.
+
+# Reference
+-Compeau, P., & Pevzner, P. (2015). Bioinformatics Algorithms: An Active Learning Approach (2nd ed., Vol. 1)
+. Active Learning Publishers, LLC
