@@ -1,5 +1,36 @@
-# BINF6250
+# Introduction
+Description of the project
+ 
+# Pseudocode
+ 
 ```
+FUNCTION CAL_SCORE(matrix, seq1, seq2, i, j, match, mismatch, gap):
+    # COMPARE SEQUENCE CHARACTERS
+        IF seq1[i - 1] == seq2[j -1]
+            match_score = match
+        ELSE
+            match_score =  mismatch
+ 
+    # CALCULA PATH SCORES GROM THE PREDECESSORS
+        diag_score = matrix[i - 1, j - 1] + match_score
+        up_score   = matrix[i - 1, j] + gap
+        left_score = matrix[i, j - 1] + gap
+ 
+    # COMPUTE SCORE EITH THE ZERO THRESHOLD
+        score = MAX(0, diag_score, up_score, left_score)
+ 
+    # RECORD TRACEBACK DIRECTION
+        IF score == 0
+            move = (0) END
+        ELSE IF score == diag_score
+            move =  (1) DIAG  
+        ELSE IF score == up_score
+            move =  (2) UP    
+        ELSE
+            move = (3) LEFT  
+ 
+        RETURN score, move
+ 
 FUNCTION TRACEBACK(seq1, seq2, traceback_matrix, maximum_position):
  
     # Initialize lists:
@@ -42,34 +73,78 @@ FUNCTION TRACEBACK(seq1, seq2, traceback_matrix, maximum_position):
     aligned_seq2 = REVERSE(aligned_seq2) AND JOIN TO STRING
  
     RETURN aligned_seq1, aligned_seq2
-
+ 
 FUNCTION SMITH_WATERMAN(seq1, seq2, match = +1, mismatch = -1, gap = -1):
  
     n = LENGTH(seq1)
     m = LENGTH(seq2)
  
     # Initialize scoring matrix and traceback matrix with zeros
+ 
     Initialize score_matrix of size (n + 1) × (m + 1) filled with 0s
     Initialize traceback_matrix of size (n + 1) × (m + 1) filled with 0s
  
     max_score = 0
-    maximum_position = (0, 0)
+    maximum_position = list of tuples
  
     # Forward Sweep: Fill score and traceback matrices cell-by-cell
-    FOR i FROM 1 TO n DO
+    FOR i FROM 1 TO RANGE(n) DO
         FOR j FROM 1 TO m DO
             (score, move) = CAL_SCORE(score_matrix, seq1, seq2, i, j, match, mismatch, gap)
             score_matrix[i][j] = score
             traceback_matrix[i][j] = move
  
             // Track global maximum cell position
-            IF score > max_score THEN
+            IF score > max_score
                 max_score = score
                 maximum_position = (i, j)
+            ELIF position_score == mac_value
+            maximun_positoin.append(current_position)
     
  
     # Backward Sweep: Reconstruct local alignment from the maximum score position
+    FOR pos IN MAXIMUM POSITION
     (aligned_seq1, aligned_seq2) = TRACEBACK(seq1, seq2, traceback_matrix, maximum_position)
  
     RETURN aligned_seq1, aligned_seq2, score_matrix
+ 
 ```
+ 
+# Successes
+Description of the team's learning points
+ 
+# Struggles
+Description of the stumbling blocks the team experienced
+ 
+# Personal Reflections
+## Group Leader
+Group leader's reflection on the project
+ 
+## Member - Graziano Peregrino  
+Other members' reflections on the project
+ 
+# Generative AI Appendix
+ 
+Description of which generative AI was used and its version.
+- NotebookLM and Gemini
+ 
+Updated the book and articles to notebookml and start asking about details of dynamic programming chapter.
+ 
+The entire prompt that was used to generate the content.
+- I need some help to understand dynamic programming and the walk of the nodes in the matrix.
+- Can you show me a numerical example of filling a grid?
+- I want to understand why the algorithm chooses the path with highest weight.
+- Can you explain the diagonal reasoning?
+- Can you explain dynamic programming in an arbitrary DAG?
+- How can I calculate the weight of the diagonal?
+- Can you explain the topological order on the dressing challenge problem?
+- How would I modify the alignment graph to solve the gap penalty issue?
+- How do affine gap penalties work?
+- Can you provide some explanation on this The Four Option Recurrence Relation?
+- How could we construct an alignment without storing any backtracking pointers?
+ 
+An explanation of how it was used (e.g., to generate ideas).
+- I used it as a tool to learn the concepts described on the chapter, asking for further clarification on the material and extra examples.
+ 
+A justification for why generative AI was used.
+- Sometimes just reading a concept and formula is not enough for me to have a grasp on the material, so I used it as an additional source to lern about dynamic programming.
