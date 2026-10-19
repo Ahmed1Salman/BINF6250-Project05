@@ -1,8 +1,13 @@
 # Introduction
-Description of the project
- 
+The application of the **Smith-Waterman Algorithm** transformed Computational Biology and Bioinformatics. It established a mathematical framework to find the optimal `local sequence alignment` between two nucleotide or protein sequence, identifying pairs of segments across two long sequences that has maximum local similarity. The algorithm isolates highly conserved local regions or functional domains while ignoring non-conserved flanking regions.
+
+The program has Key Features & Biological Significance:
+* **Dynamic Programming Matrix**: Computes local alignment scores cell-by-cell by evaluating matches, mismatches, and insertion/deletion (indel) gap penalties.
+* **Zero Threshold Option ("Free Start")**: Includes a minimum score threshold of `0` in the recurrence relation , preventing cumulative negative scores and allowing local alignments to start cleanly anywhere in the matrix.
+* **Traceback Procedure**: Begins at the **global maximum score element** in the matrix (marking the end of the alignment) and steps backward along direction pointers until hitting a cell score of **`0`** (marking the start of the alignment).
+* **Arbitrary Indel Handling**: Flexible scoring scheme accommodating match rewards, mismatch penalties, and gap penalties
+
 # Pseudocode
- 
 ```
 FUNCTION CAL_SCORE(matrix, seq1, seq2, i, j, match, mismatch, gap):
     # COMPARE SEQUENCE CHARACTERS
@@ -64,8 +69,6 @@ FUNCTION TRACEBACK(seq1, seq2, traceback_matrix, maximum_position):
             Append seq2[current_col - 1] TO aligned_seq2
  
             current_col = current_col - 1
-      
-    
  
     # Reverse lists since traceback constructs the alignment backward
  
@@ -75,58 +78,71 @@ FUNCTION TRACEBACK(seq1, seq2, traceback_matrix, maximum_position):
     RETURN aligned_seq1, aligned_seq2
  
 FUNCTION SMITH_WATERMAN(seq1, seq2, match = +1, mismatch = -1, gap = -1):
- 
     n = LENGTH(seq1)
     m = LENGTH(seq2)
- 
+
     # Initialize scoring matrix and traceback matrix with zeros
- 
     Initialize score_matrix of size (n + 1) × (m + 1) filled with 0s
     Initialize traceback_matrix of size (n + 1) × (m + 1) filled with 0s
- 
+
     max_score = 0
-    maximum_position = list of tuples
- 
+    maximum_positions = []  // List to collect all cells sharing the maximum score
+
     # Forward Sweep: Fill score and traceback matrices cell-by-cell
-    FOR i FROM 1 TO RANGE(n) DO
-        FOR j FROM 1 TO m DO
+    FOR i FROM 1 TO n
+        FOR j FROM 1 TO m 
             (score, move) = CAL_SCORE(score_matrix, seq1, seq2, i, j, match, mismatch, gap)
             score_matrix[i][j] = score
             traceback_matrix[i][j] = move
- 
-            // Track global maximum cell position
-            IF score > max_score
+
+            # Track global maximum cell positions (including ties)
+            IF score > max_score 
                 max_score = score
-                maximum_position = (i, j)
-            ELIF position_score == mac_value
-            maximun_positoin.append(current_position)
-    
- 
-    # Backward Sweep: Reconstruct local alignment from the maximum score position
-    FOR pos IN MAXIMUM POSITION
-    (aligned_seq1, aligned_seq2) = TRACEBACK(seq1, seq2, traceback_matrix, maximum_position)
- 
-    RETURN aligned_seq1, aligned_seq2, score_matrix
- 
+                maximum_positions = [(i, j)]        # Reset list with new highest position
+            ELSE IF score == max_score AND score > 0 
+                Append (i, j) to maximum_positions  # Add tie position
+
+    # Backward Sweep: Traceback all optimal alignments
+    optimal_alignment = []
+
+    IF LENGTH(maximum_positions) == 1
+        (aligned_seq1, aligned_seq2) = TRACEBACK(seq1, seq2, traceback_matrix, maximum_positions[0])
+        RETURN aligned_seq1, aligned_seq2, score_matrix
+    ELSE
+        FOR EACH pos IN maximum_positions 
+            Append TRACEBACK(seq1, seq2, traceback_matrix, pos) to optimal_alignment
+        RETURN optimal_alignment, score_matrix
 ```
  
 # Successes
-Description of the team's learning points
- 
+As we worked on this project, we developed a deeper understanding of the Smith-Waterman local alignment algorithm, particularly how its 4 option recurrence relation and zero reset mechanism help to identify regions of similarity between biological sequences. We learned how dynamic programming calculates alignment scores by evaluating matches, mismatches, and gaps while preventing negative scores from propagating through the scoring matrix.
+
+While implementing the algorithm we were able to understand the importance of the traceback process on the reconstruction of the optimal local alignment from the highest score. Through this project, we strengthened our understanding of how dynamic programming transforms individual scoring decisions into meaningful biological sequence alignments.
+
 # Struggles
-Description of the stumbling blocks the team experienced
+
  
 # Personal Reflections
 ## Group Leader
 Group leader's reflection on the project
+
+## Member
+
  
 ## Member - Graziano Peregrino  
-Other members' reflections on the project
- 
+### Issue
+One of the challenges I faced during this project was understanding the small details and individual steps of the Smith-Waterman algorithm. Initially, I struggled to understand how the scoring calculation, recurrence relation, and traceback process would work together. As I was developing a better understanding of these functions, I was able to collaborate more effectively with my group. 
+
+### What I Learned
+My takeaway from this project it is how important to work together to reach the goal. As a group we were to help each other on our individual growth and development. We were able to work on the dynamic programming issue and how to get to the correct resolution of the problem. I also gained a better understanding of how breaking a complex problem into smaller one can be effective to find a solution. Working through the algorithm together helped both my technical reasoning and problem solving skills.
+
+### Next Steps
+As next steps I want to keep working on my reasoning skills and algorithmic thinking, specially when working with dynamic programming. I want to become more confident in my understanding of the methods so I can contribute more effectively to group and support my teammates. 
+
 # Generative AI Appendix
  
 Description of which generative AI was used and its version.
-- NotebookLM and Gemini
+- NotebookLM 2.0 and Gemini 4 Argon
  
 Updated the book and articles to notebookml and start asking about details of dynamic programming chapter.
  
@@ -148,3 +164,7 @@ An explanation of how it was used (e.g., to generate ideas).
  
 A justification for why generative AI was used.
 - Sometimes just reading a concept and formula is not enough for me to have a grasp on the material, so I used it as an additional source to lern about dynamic programming.
+
+# Reference
+-Compeau, P., & Pevzner, P. (2015). Bioinformatics Algorithms: An Active Learning Approach (2nd ed., Vol. 1)
+. Active Learning Publishers, LLC
