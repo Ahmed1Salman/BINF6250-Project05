@@ -134,7 +134,7 @@ While implementing the algorithm we were able to understand the importance of th
 Group leader's reflection on the project
 
 ## Member
-
+Ahmed Salman - For this assignment, we followed the professors plan to a T. We let our weakest programmer take the wheel while the other two supervised them. In our case, me and Graziano watched over Bessie as she coded the entire program from scratch. Bessie was really inquisitive and asked a lot of questions! But I have to say she should have more confidence in her answers, but also learn how to test her code. I think that if she improves her ability at googling what she is stuck with, she is going to become a much better programmer really fast. She already has the motivation to do it. Back to the assignment, thankfully I had good understanding of the algorithm from the start so I mainly had a problem with keeping track of index values in the matrix. I kept putting -1 where it doesn't belong or not adding one when I should. I then decided to re read my own code from a fresh perspective and "drew" the matrix every step of the way by hand (naturally it wasn't the full matrix just a short example so I can keep track of positions). That is how I fixed the index issue I had.
  
 ## Member - Graziano Peregrino  
 ### Issue
