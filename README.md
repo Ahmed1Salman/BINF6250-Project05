@@ -1,4 +1,4 @@
-# Introduction
+# Project Description
 The application of the **Smith-Waterman Algorithm** transformed Computational Biology and Bioinformatics. It established a mathematical framework to find the optimal `local sequence alignment` between two nucleotide or protein sequence, identifying pairs of segments across two long sequences that has maximum local similarity. The algorithm isolates highly conserved local regions or functional domains while ignoring non-conserved flanking regions.
 
 The program has Key Features & Biological Significance:
@@ -7,7 +7,14 @@ The program has Key Features & Biological Significance:
 * **Traceback Procedure**: Begins at the **global maximum score element** in the matrix (marking the end of the alignment) and steps backward along direction pointers until hitting a cell score of **`0`** (marking the start of the alignment).
 * **Arbitrary Indel Handling**: Flexible scoring scheme accommodating match rewards, mismatch penalties, and gap penalties
 
-# Pseudocode
+## Pertinent documentation and usage write-up
+### Requirements
+- Python 3.11 or newer version 
+- Jupyter Notebook (or an editor that runs notebook cells, like VS Code or PyCharm)
+- Extra package Numpy needed. 
+
+
+#Pseudocode
 ```
 FUNCTION CAL_SCORE(matrix, seq1, seq2, i, j, match, mismatch, gap):
     # COMPARE SEQUENCE CHARACTERS
@@ -114,12 +121,12 @@ FUNCTION SMITH_WATERMAN(seq1, seq2, match = +1, mismatch = -1, gap = -1):
         RETURN optimal_alignment, score_matrix
 ```
  
-# Successes
+# Reflections
 As we worked on this project, we developed a deeper understanding of the Smith-Waterman local alignment algorithm, particularly how its 4 option recurrence relation and zero reset mechanism help to identify regions of similarity between biological sequences. We learned how dynamic programming calculates alignment scores by evaluating matches, mismatches, and gaps while preventing negative scores from propagating through the scoring matrix.
 
 While implementing the algorithm we were able to understand the importance of the traceback process on the reconstruction of the optimal local alignment from the highest score. Through this project, we strengthened our understanding of how dynamic programming transforms individual scoring decisions into meaningful biological sequence alignments.
 
-# Struggles
+
 
  
 # Personal Reflections
